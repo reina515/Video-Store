@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video List</title>
+</head>
+<body>
+    <h1>All Videos</h1>
+    <a href="{% url 'index' %}">Back to Dashboard</a>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>Movie Title</th>
+            <th>Actors</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+            <th>Actions</th>
+        </tr>
+        {% for video in videos %}
+        <tr>
+            <td>{{ video.MovieTitle }}</td>
+            <td>{{ video.Actor1Name }}{% if video.Actor2Name %}, {{ video.Actor2Name }}{% endif %}</td>
+            <td>{{ video.DirectorName }}</td>
+            <td>{{ video.MovieGenre }}</td>
+            <td>{{ video.ReleaseYear }}</td>
+            <td>
+                <a href="{% url 'video_update' video.MovieID %}">Update</a> |
+                <a href="{% url 'video_delete' video.MovieID %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No videos available.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'video_create' %}">Add New Video</a>
+</body>
+</html>
