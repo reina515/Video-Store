@@ -10,7 +10,7 @@ pipeline {
 
     stage('Checkout') {
       steps {
-        git branch: 'main', url: 'https://github.com/reina515/Video-Store.git'
+        git branch: 'main', url: 'https://github.com/reina515/Video-Store'
       }
     }
 
